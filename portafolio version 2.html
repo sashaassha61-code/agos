@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agostina Lavandera — Producción y Coordinación de VFX</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+:root {
+  --bg: #FDF7EA; /* Crema vintage de fondo */
+  --bg-card: #FFFDF5;
+  --border-color: #000000;
+  --text: #000000;
+  
+  /* PALETA NEO-BRUTALIST VINTAGE CÓMIC */
+  --accent-pink: #FF7EB9;
+  --accent-pink-dark: #FF5997;
+  --accent-yellow: #FFC72C;
+  --accent-orange: #FF6B35;
+  --accent-cyan: #00C2D1;
+  --accent-green: #00E676;
+  
+  --topbar-bg: #FDF7EA;
+  --max: 1180px;
+  --ink: #000000;
+  --paper: #FFFDF5;
+  --shadow: 6px 6px 0 #000000;
+  --shadow-small: 4px 4px 0 #000000;
+}
+
+[data-theme="dark"] {
+  --bg: #141311;
+  --bg-card: #22201D;
+  --border-color: #FFFFFF;
+  --text: #FFFFFF;
+  --topbar-bg: #141311;
+  --ink: #FFFFFF;
+  --paper: #22201D;
+  --shadow: 6px 6px 0 #FFFFFF;
+  --shadow-small: 4px 4px 0 #FFFFFF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+/* Patrón de puntos retro de fondo */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: .18;
+  background-image: radial-gradient(var(--ink) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+.display, h1, h2, h3, .project-title, .tool-name, .footer-cta-title {
+  font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  font-weight: 400;
+  letter-spacing: .02em;
+}
+.mono { font-family: 'IBM Plex Mono', monospace; }
+
+/* NAV BAR */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  min-height: 60px;
+  background: var(--topbar-bg);
+  border-bottom: 3px solid var(--ink);
+}
+.topbar .name {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  color: #000000;
+  background: var(--accent-yellow);
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0 #000000;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+  border-radius: 6px;
+}
+.nav-link, .theme-toggle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+  padding: 6px 12px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.1s ease;
+}
+.nav-link:hover, .theme-toggle:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+/* HERO SECTION */
+.hero-fullscreen {
+  min-height: calc(100vh - 60px);
+  padding: 40px 24px;
+  background: var(--bg);
+  border-bottom: 3px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-center-content { max-width: var(--max); margin: 0 auto; width: 100%; }
+.hero-tag {
+  display: inline-block;
+  color: #000000;
+  background: var(--accent-cyan);
+  border: 3px solid #000000;
+  padding: 8px 16px;
+  box-shadow: 5px 5px 0 #000000;
+  font-size: 13px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  text-transform: uppercase;
+}
+.hero-big-title {
+  color: var(--text);
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(38px, 7.5vw, 95px);
+  line-height: .9;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.hero-subtitle {
+  display: inline-block;
+  color: #000000;
+  background: var(--accent-orange);
+  border: 3px solid #000000;
+  padding: 8px 16px;
+  box-shadow: 5px 5px 0 #000000;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(12px, 1.8vw, 16px);
+  font-weight: 700;
+  border-radius: 8px;
+}
+.hero-tc-bar {
+  margin-top: 30px;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow-small);
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  border-radius: 8px;
+}
+.tc-badge {
+  background: var(--accent-pink);
+  color: #000;
+  padding: 2px 8px;
+  border: 2px solid #000;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+/* SECCIONES General */
+.section-wrapper {
+  padding: 60px 24px;
+  border-bottom: 3px solid var(--ink);
+}
+.container { max-width: var(--max); margin: 0 auto; }
+
+/* SOBRE MÍ - LAYOUT CON TV INTEGRADA */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.intro-card {
+  background: var(--accent-pink);
+  color: #000000;
+  border: 3px solid #000000;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.intro-text-simple {
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.quote-corner-box {
+  background: var(--accent-yellow);
+  color: #000000;
+  border: 3px solid #000000;
+  box-shadow: var(--shadow-small);
+  padding: 18px;
+  border-radius: 10px;
+}
+
+/* TABLA DATOS PERFIL */
+.profile-data-box {
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow-small);
+  padding: 16px;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+.data-item {
+  border: 2px solid var(--ink);
+  padding: 8px;
+  background: var(--bg);
+  border-radius: 6px;
+}
+.data-item label {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  opacity: 0.7;
+}
+.data-item span {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* RETRO MONITOR TV */
+.retro-pc-wrapper {
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  position: relative;
+}
+.retro-pc-monitor {
+  background: #EFE8D8;
+  border: 4px solid #000000;
+  border-radius: 14px 14px 0 0;
+  padding: 16px 16px 12px 16px;
+  box-shadow: 8px 8px 0 #000000;
+  position: relative;
+}
+.retro-pc-stickers {
+  position: absolute;
+  top: -14px;
+  right: 15px;
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+.sticker {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border: 2px solid #000000;
+  background: var(--accent-pink-dark);
+  color: #FFFFFF;
+  transform: rotate(4deg);
+  border-radius: 4px;
+}
+.sticker-yellow {
+  background: var(--accent-yellow);
+  color: #000000;
+  transform: rotate(-3deg);
+}
+
+.retro-screen-frame {
+  background: #111;
+  border: 3px solid #000000;
+  border-radius: 8px;
+  padding: 6px;
+  box-shadow: inset 0 0 12px rgba(0,0,0,0.9);
+  position: relative;
+}
+
+.retro-screen-content {
+  background: #0D1B2A;
+  border: 2px solid #333;
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.retro-screen-content::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
+  background-size: 100% 4px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.screen-standby {
+  position: absolute;
+  inset: 0;
+  bottom: 24px;
+  background: #000088;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  font-family: 'IBM Plex Mono', monospace;
+  text-align: center;
+  padding: 15px;
+  transition: opacity 0.3s ease;
+}
+
+.screen-standby.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vhs-tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 10px;
+  color: #00FFCC;
+  font-weight: bold;
+  text-shadow: 1px 1px #FF0055;
+}
+
+.loading-bar-container {
+  width: 140px;
+  height: 14px;
+  border: 2px solid #FFF;
+  margin-top: 12px;
+  padding: 2px;
+}
+.loading-bar-fill {
+  width: 45%;
+  height: 100%;
+  background: var(--accent-yellow);
+  animation: loadProgress 2s infinite alternate ease-in-out;
+}
+
+@keyframes loadProgress {
+  0% { width: 10%; }
+  100% { width: 90%; }
+}
+
+.photo-container {
+  width: 100%;
+  height: calc(100% - 24px);
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.15) saturate(1.2) brightness(0.95);
+}
+
+.retro-taskbar {
+  height: 24px;
+  background: #C0C0C0;
+  border-top: 2px solid #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: #000;
+  z-index: 6;
+  position: relative;
+}
+
+.retro-start-btn {
+  background: #C0C0C0;
+  border: 2px outset #FFF;
+  padding: 1px 6px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+}
+
+.retro-pc-base {
+  background: #D8D2C2;
+  border: 4px solid #000000;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  height: 40px;
+  box-shadow: 8px 8px 0 #000000;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.floppy-slot {
+  width: 100px;
+  height: 6px;
+  background: #222;
+  border-bottom: 2px solid #FFF;
+}
+.power-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  border: 2px solid #000000;
+}
+
+/* CARDS BRUTALISTAS PARA PIPELINE */
+.pipeline-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+.pipeline-card {
+  border: 3px solid #000;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  border-radius: 10px;
+  background: var(--paper);
+}
+.pipeline-card.card-1 { background: var(--accent-cyan); color: #000; }
+.pipeline-card.card-2 { background: var(--accent-yellow); color: #000; }
+.pipeline-card.card-3 { background: var(--accent-pink); color: #000; }
+
+.pipeline-card .num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 32px;
+  line-height: 1;
+}
+
+/* BUCLE DE TRABAJO (PASOS) */
+.steps-horizontal {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 25px 0;
+}
+.step-box {
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  padding: 12px;
+  box-shadow: var(--shadow-small);
+  border-radius: 8px;
+  font-size: 12px;
+}
+.step-box strong { display: block; margin-bottom: 4px; font-size: 14px; }
+
+/* REPRODUCTOR DAILY Y BUCLE CALIDAD */
+.daily-player-wrapper {
+  background: #111;
+  color: #FFF;
+  border: 3px solid #000;
+  box-shadow: var(--shadow);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 25px;
+}
+.daily-header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+.daily-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ESCALA Y COMPARATIVA */
+.cases-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 25px;
+}
+.case-card {
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  border-radius: 10px;
+}
+.case-card.pink { background: var(--accent-pink); color: #000; }
+.case-card.yellow { background: var(--accent-yellow); color: #000; }
+
+.scale-meter {
+  height: 12px;
+  background: #FFF;
+  border: 2px solid #000;
+  border-radius: 6px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.scale-fill {
+  height: 100%;
+  background: var(--accent-orange);
+}
+
+/* STACK TECH MARQUEE / GRID */
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+}
+.tech-card {
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow-small);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.marquee-box {
+  background: var(--accent-yellow);
+  color: #000;
+  border: 3px solid #000;
+  padding: 10px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 20px;
+  box-shadow: var(--shadow-small);
+  border-radius: 6px;
+}
+.marquee-content {
+  display: inline-block;
+  animation: marquee 15s linear infinite;
+  font-weight: 800;
+  font-size: 14px;
+}
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* FILMOGRAFÍA */
+.filmo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+.filmo-card {
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* TRAYECTORIA TIMELINE */
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 25px;
+}
+.timeline-item {
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow-small);
+  padding: 16px;
+  border-radius: 8px;
+}
+
+/* FOOTER */
+.site-footer {
+  background: var(--accent-cyan);
+  color: #000000;
+  padding: 50px 24px 30px;
+  text-align: center;
+  border-top: 3px solid #000000;
+}
+.footer-cta-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: clamp(32px, 6vw, 64px);
+  margin-bottom: 15px;
+}
+.footer-btn {
+  display: inline-block;
+  color: #000000;
+  background: var(--accent-yellow);
+  border: 3px solid #000000;
+  box-shadow: 5px 5px 0 #000000;
+  padding: 12px 22px;
+  text-decoration: none;
+  font-weight: 800;
+  margin: 6px;
+  border-radius: 8px;
+  font-family: 'IBM Plex Mono', monospace;
+}
+.footer-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 #000000;
+}
+
+@media (max-width: 868px) {
+  .topbar { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .about-grid, .daily-body, .cases-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="#hero" class="name display">AL</a>
+    <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+      <button class="theme-toggle" id="themeToggle" type="button">MODO COLOR</button>
+      <a href="#quien-soy" class="nav-link">QUIÉN SOY</a>
+      <a href="#arquitectura" class="nav-link">ARQUITECTURA</a>
+      <a href="#calidad" class="nav-link">CALIDAD</a>
+      <a href="#metodologia" class="nav-link">ESCALA</a>
+      <a href="#casos" class="nav-link">CASOS</a>
+      <a href="#ecosistema" class="nav-link">STACK</a>
+      <a href="#filmografia" class="nav-link">FILMOGRAFÍA</a>
+      <a href="#contacto" class="nav-link">CONTACTO</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-fullscreen" id="hero">
+    <div class="hero-center-content">
+      <span class="hero-tag">● ONLINE | PIPELINE: ACTIVE</span>
+      <h1 class="hero-big-title">AGOSTINA LAVANDERA<br>Y COORDINADORA DE VFX</h1>
+      <h2 class="hero-subtitle">SH_001_v01.EXR · RES: 4096×1716 · © AL — VFX PROD</h2>
+      
+      <div class="hero-tc-bar mono">
+        <div><span class="tc-badge">TC</span> 01:14:22:302</div>
+        <div>FRAME 0302</div>
+        <div>2.39:1 · REC.709 · 24FPS</div>
+        <div style="font-weight: bold; text-decoration: underline;">Desplázate hacia abajo para explorar 👇</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIÉN SOY -->
+  <section class="section-wrapper" id="quien-soy">
+    <div class="container">
+      <span class="mono" style="font-size: 13px; font-weight: 800; display: block; margin-bottom: 12px;">>>> QUIÉN SOY</span>
+      <h2 class="display" style="font-size: 42px; margin-bottom: 20px;">//HOLA, SOY AGOSTINA</h2>
+      
+      <div class="about-grid">
+        <div>
+          <div class="intro-card">
+            <p class="intro-text-simple">
+              Soy Agostina Lavandera. Soy arquitecta y Productora y Coordinadora de VFX. Me especializo en transformar el caos en estructura: gestionar flujos de trabajo, coordinar equipos multidisciplinarios y garantizar que los proyectos complejos realmente se concretEN.
+            </p>
+          </div>
+
+          <div class="quote-corner-box">
+            <p style="font-size: 14px; font-style: italic; font-weight: 600; line-height: 1.4;">
+              "El arte y la creación siempre han sido mi forma de conectarme con el mundo, pero la arquitectura me dio las herramientas para dar forma a esa imaginación y materializar mi visión. Por eso, formar parte de esta industria es un camino que disfruto profundamente. Mi rol no es generar el efecto visual, sino sostener la estructura que lo hace posible: garantizar que la información fluya para que las ideas se conviertan en realidad."
+            </p>
+          </div>
+
+          <div class="profile-data-box mono">
+            <strong>DATOS_PERFIL.TXT</strong>
+            <div class="data-grid">
+              <div class="data-item"><label>ROL</label><span>Productora · Coordinadora de VFX</span></div>
+              <div class="data-item"><label>BASE</label><span>Arquitecta</span></div>
+              <div class="data-item"><label>FOCO</label><span>Pipeline end-to-end · Equipos</span></div>
+              <div class="data-item"><label>PLANOS</label><span>600+ gestionados</span></div>
+              <div class="data-item"><label>EQUIPOS</label><span>Hasta 30+ personas</span></div>
+              <div class="data-item"><label>IDIOMAS</label><span>ES / EN / CN (coordinación)</span></div>
+              <div class="data-item"><label>ESTADO</label><span>Disponible</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MONITOR CRT RETRO -->
+        <div>
+          <div class="retro-pc-wrapper">
+            <div class="retro-pc-monitor">
+              <div class="retro-pc-stickers">
+                <span class="sticker">VFX PROD</span>
+                <span class="sticker sticker-yellow">REC.709</span>
+              </div>
+              
+              <div class="retro-screen-frame">
+                <div class="retro-screen-content" id="screenContent">
+                  <div class="screen-standby" id="screenStandby">
+                    <span class="vhs-tag">PLAY ► VHS-1</span>
+                    <p style="font-size: 12px; font-weight: bold; margin-bottom: 6px;">[ HAZ CLIC PARA CONOCERME ]</p>
+                    <p style="font-size: 10px; opacity: 0.8;">(y ver foto)</p>
+                    <div class="loading-bar-container">
+                      <div class="loading-bar-fill"></div>
+                    </div>
+                  </div>
+
+                  <div class="photo-container">
+                    <img src="https://lh3.googleusercontent.com/d/1uat2U5Kyyqs-7gsjs_NCMGo_BA-CRVbH" alt="Agostina Lavandera Profile">
+                  </div>
+
+                  <div class="retro-taskbar">
+                    <button class="retro-start-btn" id="startBtn" type="button">
+                      <span style="background:#000; color:#fff; padding:0 3px; font-size:8px;">⊞</span> Start
+                    </button>
+                    <span id="screenStatusTitle" style="font-size: 8px; font-weight: bold;">STANDBY...</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="retro-pc-base">
+              <div class="floppy-slot"></div>
+              <div class="power-btn"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARQUITECTURA DE TRABAJO -->
+  <section class="section-wrapper" id="arquitectura">
+    <div class="container">
+      <span class="mono" style="font-size: 13px; font-weight: 800; display: block; margin-bottom: 12px;">>>> ARQUITECTURA DE TRABAJO</span>
+      <h2 class="display" style="font-size: 42px;">//MI FLUJO DE TRABAJO Y PIPELINE END-TO-END</h2>
+      <p style="font-weight: 500; max-width: 800px; margin-top: 10px;">
+        Esta es mi manera de poner orden al caos. Aplico la estructura que me dio la arquitectura para construir un flujo de trabajo claro donde la información nunca se pierde, el equipo trabaja de forma fluida y cada entrega llega al cliente impecable, manteniendo al mínimo los márgenes de error.
+      </p>
+
+      <div class="pipeline-cards-grid">
+        <div class="pipeline-card card-1">
+          <div class="num">01</div>
+          <h3 class="display" style="font-size: 24px; margin: 10px 0 5px;">DEFINICIÓN — EL QUÉ Y MI ROL</h3>
+          <p style="font-size: 13px;">Diseño y coordino la estructura por la que transita cada plano. Actúo como el puente operativo central entre compositores internos, proveedores externos (rotoscopia y clean-up), supervisores técnicos y contrapartes internacionales.</p>
+        </div>
+
+        <div class="pipeline-card card-2">
+          <div class="num">02</div>
+          <h3 class="display" style="font-size: 24px; margin: 10px 0 5px;">METODOLOGÍA — EL CÓMO</h3>
+          <p style="font-size: 13px;">Aplico mi experiencia en arquitectura para organizar grandes volúmenes de datos. Modulo la intensidad del control: manteniendo un flujo ágil para volúmenes pequeños y ejecutando auditorías rigurosas de datos cuando el proyecto escala a más de 600 planos.</p>
+        </div>
+
+        <div class="pipeline-card card-3">
+          <div class="num">03</div>
+          <h3 class="display" style="font-size: 24px; margin: 10px 0 5px;">PROPÓSITO — EL PORQUÉ</h3>
+          <p style="font-size: 13px;">Porque el orden metódico despeja el camino para la calidad visual. Al construir una estructura transparente, los artistas trabajan con claridad, la supervisión se agiliza y los clientes reciben entregas previsibles y organizadas.</p>
+        </div>
+      </div>
+
+      <!-- DESGLOSE DE BUCLE DE TRABAJO -->
+      <div style="margin-top: 40px;">
+        <span class="mono" style="font-size: 12px; font-weight: 800;">Bucle de Corrección · Notas PDF / Daily / Ajustes</span>
+        
+        <div class="steps-horizontal mono">
+          <div class="step-box">
+            <strong>01 FUENTES MIXTAS</strong>
+            <p>Artistas y Proveedores › Ext. Roto / Clean-up › COMP / Track / DMP</p>
+          </div>
+          <div class="step-box">
+            <strong>02 INGESTA Y DATOS</strong>
+            <p>Auditoría Mecánica › Slack + Sheets Tracker › Conteo y Proxy / HQ</p>
+          </div>
+          <div class="step-box">
+            <strong>03 REVISIÓN TÉCNICA</strong>
+            <p>Daily de Supervisión › Ftrack + Live Meet › Exportación Notas PDF</p>
+          </div>
+          <div class="step-box">
+            <strong>04 ENVÍO A CLIENTE</strong>
+            <p>Playlist y Drive › Link Revisión Ftrack › Notas ES/EN/CN</p>
+          </div>
+          <div class="step-box">
+            <strong>05 ENTREGA FINAL</strong>
+            <p>Masterizado .EXR › Trazabilidad Total › Manifiesto por Episodio</p>
+          </div>
+        </div>
+
+        <div class="quote-corner-box" style="margin-top: 15px;">
+          <strong class="mono" style="font-size: 13px;">DESGLOSE PASO A PASO — Fases 01 y 02: Recepción, conteo de planos y ensamblado de assets</strong>
+          <p style="font-size: 13px; margin-top: 5px;">
+            Recibo todo a través de un único canal dedicado de Slack para que nada se pierda en chats o correos. Reviso las entregas de artistas internos y estudios externos (rotoscopia, borrado de cables, DMP, tracking o composición) y verifico las convenciones de nomenclatura. Según las necesidades de entrega, genero proxies livianos en Low-Res para revisión rápida o preparo versiones High-Res si se requiere inspeccionar detalles finos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUCLE DE CALIDAD Y CONTROL -->
+  <section class="section-wrapper" id="calidad">
+    <div class="container">
+      <span class="mono" style="font-size: 13px; font-weight: 800; display: block; margin-bottom: 12px;">>>> BUCLE DE CALIDAD Y CONTROL</span>
+      <h2 class="display" style="font-size: 42px;">//INSTANCIAS DE REVISIÓN EN TIEMPO REAL</h2>
+      <p style="font-weight: 500; max-width: 800px; margin-top: 5px;">
+        El proceso de aprobación no termina en la ingesta. Diseñé un circuito dinámico de verificación en dos niveles donde cada plano pasa por una auditoría inmediata antes de ser sellado para la entrega final.
+      </p>
+
+      <!-- SIMULADOR REPRODUCTOR DAILY -->
+      <div class="daily-player-wrapper mono">
+        <div class="daily-header">
+          <div>REPRODUCTOR DE DAILY — SH_040_v03.EXR</div>
+          <div>FPS: 24.00 | LUT: REC.709 | ASPECTO: 2.39:1</div>
+        </div>
+
+        <div class="daily-body">
+          <div style="background: #222; border: 2px solid #444; padding: 15px; border-radius: 6px; position: relative;">
+            <div style="position: absolute; top: 10px; right: 10px; color: #FFC72C; font-weight: bold;">● NOTA PENDIENTE</div>
+            <p style="color: #00C2D1; font-weight: bold;">TRK_01 / TRK_02</p>
+            <p style="margin: 10px 0;">Limpiar borde de chroma y cable</p>
+            <div style="font-size: 11px; opacity: 0.7;">FOTOGRAMA 0061 — NOTA SUP | 01:14:22:61</div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+            <div style="background: #333; padding: 8px; border-left: 4px solid #FFC72C;">
+              <strong>TC:</strong> 01:14:22:61 / 01:14:22:240
+            </div>
+            <div style="background: #333; padding: 8px; border-left: 4px solid #00E676;">
+              <strong>ESTADO:</strong> EN REVISIÓN DE SUPERVISIÓN
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOS INSTANCIAS -->
+      <div class="cases-grid" style="margin-top: 25px;">
+        <div class="case-card">
+          <h3 class="display" style="font-size: 24px;">01. INSTANCIA INTERNA — De Compositor a Supervisor</h3>
+          <p class="mono" style="font-size: 11px; font-weight: bold; margin-bottom: 10px;">INTERNO (SH010 - SH040)</p>
+          <ul style="font-size: 13px; list-style: square; padding-left: 18px; display: flex; flex-direction: column; gap: 8px;">
+            <li><strong>Ingesta Centralizada:</strong> Carga de avances por parte del artista en un único canal de Slack. Elimina archivos y chats dispersos.</li>
+            <li><strong>Tracker en Vivo:</strong> Trazabilidad inmediata de estado: versión entregada, artista asignado, aprobación del supervisor y pendientes.</li>
+            <li><strong>Daily en Ftrack + Meet:</strong> Revisión sincrónica en vivo con el supervisor. Anotaciones en pantalla fotograma a fotograma en tiempo real.</li>
+            <li><strong>Resultado A — Aprobado:</strong> El plano recibe el visto bueno del supervisor. Pasa directamente a la playlist del cliente.</li>
+            <li><strong>Resultado B — Corrección:</strong> Exportación de PDF fotograma a fotograma desde Ftrack. El plano vuelve al compositor para corrección.</li>
+          </ul>
+        </div>
+
+        <div class="case-card">
+          <h3 class="display" style="font-size: 24px;">02. INSTANCIA DE CLIENTE Y ENTREGA INTERNACIONAL</h3>
+          <p class="mono" style="font-size: 11px; font-weight: bold; margin-bottom: 10px;">ENTREGA (SH050 - SH060)</p>
+          <ul style="font-size: 13px; list-style: square; padding-left: 18px; display: flex; flex-direction: column; gap: 8px;">
+            <li><strong>Playlist + Link de Drive:</strong> Envío de paquete en alta resolución a la supervisión del cliente en China con notas traducidas (ES/EN/CN).</li>
+            <li><strong>Clasificación de Feedback:</strong> Clasificación inmediata de los comentarios del cliente: aprobados como finales vs. planos que requieren retakes.</li>
+            <li><strong>Aprobación del Cliente:</strong> Plano marcado como final. Se solicita render master en secuencia .EXR con aprobación formal.</li>
+            <li><strong>Retake Solicitado:</strong> Comunicación inmediata de ajustes al artista. Se revisa en el daily y se vuelve a enviar para cierre.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- MÉTRICAS DE RENDIMIENTO -->
+      <div class="profile-data-box mono" style="margin-top: 25px; background: var(--accent-yellow); color: #000;">
+        <strong>MÉTRICAS DE RENDIMIENTO — Ritmo de Cierre (Rampa de Entrega)</strong>
+        <div style="font-size: 28px; font-family: 'Archivo Black'; margin: 5px 0;">321 ✓ PLANOS ENTREGADOS</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px; text-align: center; margin-top: 10px;">
+          <div style="background: #FFF; border: 2px solid #000; padding: 6px;">Semana 1<br><strong>25%</strong></div>
+          <div style="background: #FFF; border: 2px solid #000; padding: 6px;">Semana 2<br><strong>55%</strong></div>
+          <div style="background: #FFF; border: 2px solid #000; padding: 6px;">Semana 3<br><strong>80%</strong></div>
+          <div style="background: #FFF; border: 2px solid #000; padding: 6px;">Semana 4<br><strong>95%</strong></div>
+          <div style="background: var(--accent-green); border: 2px solid #000; padding: 6px;">EP 101<br><strong>100% OK</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METODOLOGÍA Y ADAPTABILIDAD -->
+  <section class="section-wrapper" id="metodologia">
+    <div class="container">
+      <span class="mono" style="font-size: 13px; font-weight: 800; display: block; margin-bottom: 12px;">>>> METODOLOGÍA Y ADAPTABILIDAD</span>
+      <h2 class="display" style="font-size: 42px;">//ADAPTABILIDAD OPERATIVA POR ESCALA</h2>
+      <p style="font-weight: 500; max-width: 850px; margin-top: 5px;">
+        Un pipeline eficiente no es rígido; la clave del éxito en producción radica en la adaptabilidad. La estructura organizacional y la profundidad del seguimiento deben modularse en función del volumen de planos y la complejidad del equipo, evitando la burocracia innecesaria en proyectos pequeños y el caos operativo en grandes producciones.
+      </p>
+
+      <div class="pipeline-cards-grid" style="margin-top: 20px;">
+        <div class="pipeline-card">
+          <span class="mono" style="font-size: 11px; font-weight: bold;">ESCALA PEQUEÑA</span>
+          <h3 class="display" style="font-size: 22px;">Proyectos Ágiles</h3>
+          <p style="font-size: 13px; margin-top: 5px;">Estructuras hiperligeras, comunicación sincrónica directa y seguimiento sin fricciones, ideal para entregas comerciales o spots dinámicos.</p>
+        </div>
+
+        <div class="pipeline-card" style="background: var(--accent-pink);">
+          <span class="mono" style="font-size: 11px; font-weight: bold;">ESCALA MEDIA (~300 PLANOS)</span>
+          <h3 class="display" style="font-size: 22px;">Producción Enfocada (~15 personas)</h3>
+          <p style="font-size: 13px; margin-top: 5px;">Equipos acotados (~15 personas). Enfoque en velocidad de entrega, contacto directo con el cliente y coordinación de pipeline dedicada para un flujo altamente dinámico.</p>
+        </div>
+
+        <div class="pipeline-card" style="background: var(--accent-yellow);">
+          <span class="mono" style="font-size: 11px; font-weight: bold;">ESCALA MASIVA (600+ PLANOS)</span>
+          <h3 class="display" style="font-size: 22px;">Gran Producción (Tentpole 30+ personas)</h3>
+          <p style="font-size: 13px; margin-top: 5px;">Más de 30 personas y proveedores externos. Gestión de barreras idiomáticas internacionales, estricta trazabilidad y absorción de roles combinados de Pipeline + Producción.</p>
+        </div>
+      </div>
+
+      <div class="about-grid" style="margin-top: 30px;">
+        <div class="quote-corner-box">
+          <strong class="mono">Cultura de Trabajo · Mi Criterio</strong>
+          <p style="font-size: 13px; margin-top: 5px;">
+            Mi formación en arquitectura me enseñó a pensar en sistemas antes de construir. No improviso: diseño la estructura para que la producción nunca caiga en el caos, me anticipo a posibles cuellos de botella y mantengo el trabajo fluyendo sin problemas independientemente de la escala.
+          </p>
+        </div>
+
+        <div class="intro-card" style="background: var(--accent-cyan); margin-bottom:0;">
+          <strong class="mono">Metodología · Día a Día</strong>
+          <p style="font-size: 13px; margin-top: 5px;">
+            Coordinar no es solo mirar una planilla de Excel. Es estar atento al equipo, resolver las dudas de los artistas al instante, gestionar permisos y accesos a plataformas cuando sea necesario, y garantizar que nadie pierda tiempo bloqueado por un problema operativo.
+          </p>
+        </div>
+      </div>
+      <p class="mono" style="font-size: 10px; opacity: 0.7; margin-top: 15px;">* Metodología de control diseñada y operada personally. Material y gráficos con fines demostrativos del flujo de trabajo.</p>
+    </div>
+  </section>
+
+  <!-- CASOS DE APLICACIÓN REAL -->
+  <section class="section-wrapper" id="casos">
+    <div class="container">
+      <span class="mono" style="font-size: 13px; font-weight: 800; display: block; margin-bottom: 12px;">>>> CASOS DE APLICACIÓN REAL</span>
+      <h2 class="display" style="font-size: 42px;">//DESGLOSE DE PROYECTOS Y VOLUMEN DE TRABAJO</h2>
+      <p style="font-weight: 500; max-width: 850px; margin-top: 5px;">
+        A continuación se muestra un desglose detallado de cómo se aplicó esta metodología en producciones reales con dinámicas y exigencias operativas radicalmente opuestas.
+      </p>
+
+      <div class="cases-grid">
+        <!-- CASO 1 -->
+        <div class="case-card pink">
+          <span class="mono" style="font-size: 11px; font-weight: bold;">Escala 1x</span>
+          <h3 class="display" style="font-size: 32px;">Silent Night, Deadly Night</h3>
+          <p class="mono" style="font-size: 12px; font-weight: bold;">Largometraje · Thriller Gore</p>
+          
+          <div style="font-family:'Archivo Black'; font-size: 36px; margin: 10px 0;">300 PLANOS</div>
+
+          <ul style="font-size: 12px; list-style: none; display: flex; flex-direction: column; gap: 6px;" class="mono">
+            <li><strong>Equipo a cargo:</strong> 15 Artistas (Bilingüe ES/EN)</li>
+            <li><strong>Estructura:</strong> Con Coordinador de Pipeline dedicado</li>
+            <li><strong>Comunicación:</strong> Directa con el cliente sin intermediarios</li>
+          </ul>
+
+          <div style="background: rgba(255,255,255,0.6); border: 2px solid #000; padding: 12px; border-radius: 6px; margin-top: 15px; font-size: 12px;">
+            <strong>CASO DE ESTUDIO:</strong>
+            <p style="margin-top: 4px;">Proyecto de thriller gore con efectos visuales intensos de sangre y retoque técnico. Mi enfoque se centró en la supervisión cercana del equipo y en mantener una comunicación fluida con la empresa cliente. Contar con un coordinador de pipeline dedicado filtró la carga de trabajo técnica y mantuvo un ritmo operativo dinámico.</p>
+          </div>
+
+          <div style="margin-top: 15px;">
+            <span class="mono" style="font-size: 10px; font-weight: bold;">VOLUMEN DE PLANOS (300 / 600+)</span>
+            <div class="scale-meter"><div class="scale-fill" style="width: 50%;"></div></div>
+          </div>
+        </div>
+
+        <!-- CASO 2 -->
+        <div class="case-card yellow">
+          <span class="mono" style="font-size: 11px; font-weight: bold;">Escala 2x+</span>
+          <h3 class="display" style="font-size: 32px;">Veil of Shadows</h3>
+          <p class="mono" style="font-size: 12px; font-weight: bold;">Serie de TV Internacional</p>
+          
+          <div style="font-family:'Archivo Black'; font-size: 36px; margin: 10px 0;">600+ PLANOS</div>
+
+          <ul style="font-size: 12px; list-style: none; display: flex; flex-direction: column; gap: 6px;" class="mono">
+            <li><strong>Equipo a cargo:</strong> 30 Personas + Estudios Externos</li>
+            <li><strong>Estructura:</strong> Productora y Coordinadora de Pipeline</li>
+            <li><strong>Comunicación:</strong> Cliente en China vía traductor</li>
+          </ul>
+
+          <div style="background: rgba(255,255,255,0.6); border: 2px solid #000; padding: 12px; border-radius: 6px; margin-top: 15px; font-size: 12px;">
+            <strong>CASO DE ESTUDIO:</strong>
+            <p style="margin-top: 4px;">Ante la ausencia de un coordinador de pipeline dedicado, asumí ambos roles por completo para mantener el proyecto en marcha. Gestioné un volumen masivo de datos, coordiné la ingesta y salida con China superando barreras idiomáticas y mantuve una trazabilidad exacta de más de 600 planos sin comprometer los plazos de entrega.</p>
+          </div>
+
+          <div style="margin-top: 15px;">
+            <span class="mono" style="font-size: 10px; font-weight: bold;">VOLUMEN DE PLANOS (600+ / 600+)</span>
+            <div class="scale-meter"><div class="scale-fill" style="width: 100%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPARATIVA VISUAL Y ROLES COMPLEMENTARIOS -->
+      <div class="profile-data-box mono" style="margin-top: 25px;">
+        <strong>COMPARATIVA VISUAL DE ESCALA Y RECURSOS — Relación de Magnitud</strong>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 10px;">
+          <div style="border: 2px solid #000; padding: 10px; background: var(--bg);">
+            <p style="font-size: 11px; font-weight: bold;">VOLUMEN DE PLANOS GESTIONADOS</p>
+            <p style="font-size: 14px; margin-top: 4px;"><strong>300</strong> Silent Night (1x) vs <strong>600+</strong> Veil of Shadows (2x+)</p>
+          </div>
+          <div style="border: 2px solid #000; padding: 10px; background: var(--bg);">
+            <p style="font-size: 11px; font-weight: bold;">EQUIPO HUMANO Y PROVEEDORES</p>
+            <p style="font-size: 14px; margin-top: 4px;"><strong>15 Personas</strong> (Interno) vs <strong>30+ Personas</strong> + Proveedores</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+          <div style="border: 2px dashed #000; padding: 10px;">
+            <strong>DMP01 — Enlace con el Equipo de DMP</strong>
+            <p style="font-size: 12px; margin-top: 4px;">Coordiné el grupo de Digital Matte Painting junto con VFX, alineando entregables y dependencias entre ambos equipos dentro del mismo pipeline de revisión.</p>
+          </div>
+          <div style="border: 2px dashed #000; padding: 10px;">
+            <strong>SUP01 — Soporte Diario al Equipo</strong>
+            <p style="font-size: 12px; margin-top: 4px;">Gestioné las consultas diarias de todo el equipo (dudas de procesos y acceso a diversas plataformas de trabajo más allá de Drive) para evitar cuellos de botella operativos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ECOSISTEMA TECNOLÓGICO -->
+  <section class="section-wrapper" id="ecosistema">
+    <div class="container">
+      <span class="mono" style="font-size: 13px; font-weight: 800; display: block; margin-bottom: 12px;">>>> ECOSISTEMA TECNOLÓGICO</span>
+      <h2 class="display" style="font-size: 42px;">//SOFTWARE Y STACK OPERATIVO</h2>
+      <p style="font-weight: 500; max-width: 800px;">
+        Dominio de herramientas estándar de la industria para mantener la trazabilidad de datos, facilitar el flujo de trabajo de los artistas y garantizar una comunicación fluida con supervisores y clientes.
+      </p>
+
+      <div class="tech-grid">
+        <div class="tech-card">
+          <span class="mono" style="font-size: 10px; font-weight: bold;">01 SEGUIMIENTO DE PRODUCCIÓN</span>
+          <h3 class="display" style="font-size: 22px; margin: 4px 0;">FTRACK / SHOTGRID</h3>
+          <p style="font-size: 12px;">Gestión integral de playlists, asignación de tareas, seguimiento de estados y notas de supervisión fotograma a fotograma.</p>
+        </div>
+
+        <div class="tech-card">
+          <span class="mono" style="font-size: 10px; font-weight: bold;">02 DATOS Y CONTROL</span>
+          <h3 class="display" style="font-size: 22px; margin: 4px 0;">EXCEL / GOOGLE SHEETS</h3>
+          <p style="font-size: 12px;">Estructuración de matrices de planos, bases de datos multinivel, seguimiento presupuestario y monitoreo en tiempo real.</p>
+        </div>
+
+        <div class="tech-card">
+          <span class="mono" style="font-size: 10px; font-weight: bold;">03 COMUNICACIÓN Y CENTROS</span>
+          <h3 class="display" style="font-size: 22px; margin: 4px 0;">SLACK / ASANA / TRELLO</h3>
+          <p style="font-size: 12px;">Centralización de canales operativos, gestión de permisos, alertas instantáneas y eliminación de cadenas de email dispersas.</p>
+        </div>
+
+        <div class="tech-card">
+          <span class="mono" style="font-size: 10px; font-weight: bold;">04 REVISIÓN Y ENTREGA</span>
+          <h3 class="display" style="font-size: 22px; margin: 4px 0;">SYNCKEY / RV / NUKE</h3>
+          <p style="font-size: 12px;">Inspección técnica básica, verificación de nomenclatura, control de mattes/alfas y armado de playlists para clientes.</p>
+        </div>
+      </div>
+
+      <div class="marquee-box mono">
+        <div class="marquee-content">
+          FTRACK / SHOTGRID / EXCEL / GOOGLE SHEETS / SLACK / ASANA / TRELLO / SYNCKEY / RV / NUKE / FTRACK / SHOTGRID / EXCEL / GOOGLE SHEETS / SLACK / ASANA / TRELLO / SYNCKEY / RV / NUKE /
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILMOGRAFÍA Y PRODUCCIONES -->
+  <section class="section-wrapper" id="filmografia">
+    <div class="container">
+      <span class="mono" style="font-size: 13px; font-weight: 800; display: block; margin-bottom: 12px;">>>> FILMOGRAFÍA Y PRODUCCIONES</span>
+      <h2 class="display" style="font-size: 42px;">//PROYECTOS Y EXPERIENCIA EN SET / PIPELINE</h2>
+      <p style="font-weight: 500; max-width: 800px;">
+        Coordinación activa en producciones nacionales e internacionales, gestionando entregas de gran volumen con rigurosos estándares técnicos.
+      </p>
+
+      <div class="filmo-grid">
+        <div class="filmo-card">
+          <span class="mono" style="font-size: 10px; font-weight: bold;">01 SERIE DE TV INTERNACIONAL</span>
+          <h3 class="display" style="font-size: 24px;">PRODUCCIÓN DE ALTO VOLUMEN</h3>
+          <p style="font-size: 12px; margin: 8px 0;"><strong>Coordinadora de VFX (+600 Planos):</strong> Coordinación de pipeline end-to-end entre equipos internos de composición y proveedores externos de Roto/Clean-up. Control de calidad y entregas multinivel para el mercado internacional (China / Europa).</p>
+          <div class="mono" style="font-size: 11px; background: var(--bg); padding: 6px; border: 2px solid #000;">
+            Planos: 600+ | Mercado: Internacional | Rol: Coordinadora
+          </div>
+        </div>
+
+        <div class="filmo-card">
+          <span class="mono" style="font-size: 10px; font-weight: bold;">02 LARGOMETRAJE</span>
+          <h3 class="display" style="font-size: 24px;">CINE Y FICCIÓN</h3>
+          <p style="font-size: 12px; margin: 8px 0;"><strong>Coordinadora / Asistente de VFX:</strong> Organización de dailies con el supervisor de efectos visuales, gestión de entregas parciales y generación de listas de planos master finales en .EXR.</p>
+          <div class="mono" style="font-size: 11px; background: var(--bg); padding: 6px; border: 2px solid #000;">
+            Formato: .EXR Master | Rol: Coord. / Asistente | Dailies + Entregas
+          </div>
+        </div>
+
+        <div class="filmo-card">
+          <span class="mono" style="font-size: 10px; font-weight: bold;">03 PUBLICIDAD Y MEDIOS</span>
+          <h3 class="display" style="font-size: 24px;">CAMPAÑAS DE RITMO RÁPIDO</h3>
+          <p style="font-size: 12px; margin: 8px 0;"><strong>Productora y Gestora de VFX:</strong> Gestión de proyectos con entregas ágiles de 24 a 48 horas, comunicación directa con directores creativos y optimización de recursos en tiempo récord.</p>
+          <div class="mono" style="font-size: 11px; background: var(--bg); padding: 6px; border: 2px solid #000;">
+            Entrega: 24-48h | Rol: Productora | Contacto: Directo / Creativo
+          </div>
+        </div>
+      </div>
+
+      <!-- TRAYECTORIA -->
+      <div style="margin-top: 40px;">
+        <span class="mono" style="font-size: 13px; font-weight: 800; display: block; margin-bottom: 12px;">>>> TRAYECTORIA Y EXPERIENCIA</span>
+        <h3 class="display" style="font-size: 32px;">//EXPERIENCIA LABORAL Y EDUCACIÓN</h3>
+
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <span class="mono" style="font-size: 11px; font-weight: bold; background: var(--accent-yellow); padding: 2px 6px; border: 1px solid #000;">2022 — PRESENTE</span>
+            <h4 class="display" style="font-size: 20px; margin-top: 4px;">PRODUCTORA Y COORDINADORA DE VFX — Freelance y Estudios</h4>
+            <p style="font-size: 13px;">Coordinación operativa de VFX para series de TV, largometrajes y comerciales. Gestión de proveedores, ingesta de datos, organización de dailies, seguimiento presupuestario y monitoreo de entregas.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span class="mono" style="font-size: 11px; font-weight: bold; background: var(--accent-pink); padding: 2px 6px; border: 1px solid #000;">2018 — 2022</span>
+            <h4 class="display" style="font-size: 20px; margin-top: 4px;">ARQUITECTA Y COORDINADORA DE PROYECTOS — Estudios de Arquitectura y Dirección de Obra</h4>
+            <p style="font-size: 13px;">Diseño, planificación y dirección de obra. Gestión de gremios multidisciplinarios, logística de materiales, control presupuestario y estricto cumplimiento de plazos.</p>
+          </div>
+
+          <div class="timeline-item">
+            <span class="mono" style="font-size: 11px; font-weight: bold; background: var(--accent-cyan); padding: 2px 6px; border: 1px solid #000;">FORMACIÓN ACADÉMICA</span>
+            <h4 class="display" style="font-size: 20px; margin-top: 4px;">GRADO EN ARQUITECTURA — Universidad / Facultad de Arquitectura y Diseño</h4>
+            <p style="font-size: 13px;">Formación universitaria enfocada en la resolución de problemas complejos, gestión sistémica de proyectos, análisis espacial y liderazgo de equipos.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER Y CONTACTO -->
+  <footer class="site-footer" id="contacto">
+    <div class="container">
+      <span class="mono" style="font-size: 12px; font-weight: 800; display: block; margin-bottom: 8px;">>>> HAGÁMOSLO REALIDAD</span>
+      <h2 class="footer-cta-title">¿TRABAJAMOS JUNTOS?</h2>
+      <p style="font-size: 15px; font-weight: 600; max-width: 600px; margin: 0 auto 20px auto;">
+        Estoy disponible para sumarme a nuevos proyectos de VFX, largometrajes o series como Productora de VFX o Coordinadora de VFX.
+      </p>
+
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <a href="mailto:agostina.lavandera@gmail.com" class="footer-btn">✉ ENVIAR EMAIL DIRECTO</a>
+        <a href="tel:+34722440705" class="footer-btn">📞 +34 722 440 705</a>
+        <a href="https://linkedin.com" target="_blank" class="footer-btn">🔗 LINKEDIN</a>
+        <a href="https://imdb.com" target="_blank" class="footer-btn">🎬 IMDb</a>
+      </div>
+
+      <p class="mono" style="font-size: 11px; margin-top: 35px; font-weight: 700;">
+        © AGOSTINA LAVANDERA — PRODUCCIÓN Y COORDINACIÓN DE VFX · DISEÑADO CON RIGOR ARQUITECTÓNICO
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle Tema Modo Color
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        document.documentElement.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+      });
+    }
+
+    // Interacción Monitor CRT Retro
+    const startBtn = document.getElementById('startBtn');
+    const screenStandby = document.getElementById('screenStandby');
+    const screenStatusTitle = document.getElementById('screenStatusTitle');
+
+    if (startBtn && screenStandby) {
+      startBtn.addEventListener('click', () => {
+        if (!screenStandby.classList.contains('hidden')) {
+          screenStandby.classList.add('hidden');
+          screenStatusTitle.textContent = "AGOSTINA_PROFILE.JPG";
+        } else {
+          screenStandby.classList.remove('hidden');
+          screenStatusTitle.textContent = "STANDBY...";
+        }
+      });
+    }
+  </script>
+</body>
+</html>
